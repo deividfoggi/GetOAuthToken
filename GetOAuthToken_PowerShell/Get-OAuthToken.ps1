@@ -10,9 +10,12 @@
 #    Please note: None of the conditions outlined in the disclaimer above will supersede the terms and conditions contained 
 #    within the Premier Customer Services Description.
 
-$clientID = Read-Host "Application ID"
-$tenantID = Read-Host "Tenant ID"
-$clientSecret = Read-Host "Client Secret"
+Param(
+    [Parameter(Mandatory=$true)]$clientID,
+    [Parameter(Mandatory=$true)]$tenantID,
+    [Parameter(Mandatory=$true)]$clientSecret
+)
+
 $stringUrl = "https://login.microsoftonline.com/" + $tenantId + "/oauth2/v2.0/token/"
 $postData = "client_id=" + $clientId + "&scope=https://graph.microsoft.com/.default&client_secret=" + $clientSecret + "&grant_type=client_credentials"
 
